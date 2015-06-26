@@ -1,0 +1,200 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6f697461, pid=3164, tid=7384
+#
+# JRE version: 7.0-b147
+# Java VM: Java HotSpot(TM) Client VM (21.0-b17 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# C  0x6f697461
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x04bef000):  JavaThread "Thread-3" [_thread_in_native, id=7384, stack(0x06aa0000,0x06af0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x6f697461
+
+Registers:
+EAX=0x6120726f, EBX=0x6aca1ee0, ECX=0x74e75494, EDX=0x6120726f
+ESP=0x06aeeed0, EBP=0x63696c70, ESI=0x34805868, EDI=0x04bef000
+EIP=0x6f697461, EFLAGS=0x00010212
+
+Top of Stack: (sp=0x06aeeed0)
+0x06aeeed0:   6572206e 73657571 0a0d2e74 0000000a
+0x06aeeee0:   ceff0000 76f8f921 74d46cc2 000003e8
+0x06aeeef0:   00000370 00000000 76f8f9f2 74e6c455
+0x06aeef00:   00000370 00000000 06aeef28 74d46d00
+0x06aeef10:   00000370 04bef000 34805868 6aca1ee0
+0x06aeef20:   00000000 00000004 06aef1a8 10005169
+0x06aeef30:   000003e8 06aef1a4 34805b8e 06aeef68
+0x06aeef40:   348104e0 00000000 34805be8 00000000 
+
+Instructions: (pc=0x6f697461)
+0x6f697441:   
+[error occurred during error reporting (printing registers, top of stack, instructions near pc), id 0xc0000005]
+
+Register to memory mapping:
+
+EAX=0x6120726f is an unknown value
+EBX=0x6aca1ee0 is an unknown value
+ECX=0x74e75494 is an unknown value
+EDX=0x6120726f is an unknown value
+ESP=0x06aeeed0 is pointing into the stack for thread: 0x04bef000
+EBP=0x63696c70 is an unknown value
+ESI=0x34805868 is an oop
+{method} 
+ - klass: {other class}
+EDI=0x04bef000 is a thread
+
+
+Stack: [0x06aa0000,0x06af0000],  sp=0x06aeeed0,  free space=315k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0x6f697461
+
+[error occurred during error reporting (printing native stack), id 0xc0000005]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  gnu.io.RXTXPort.eventLoop()V+0
+j  gnu.io.RXTXPort$MonitorThread.run()V+12
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0x04bef000 JavaThread "Thread-3" [_thread_in_native, id=7384, stack(0x06aa0000,0x06af0000)]
+  0x04bdfc00 JavaThread "TimerQueue" daemon [_thread_blocked, id=8040, stack(0x04f50000,0x04fa0000)]
+  0x0211e800 JavaThread "DestroyJavaVM" [_thread_blocked, id=4472, stack(0x00180000,0x001d0000)]
+  0x04b8fc00 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=7392, stack(0x04fa0000,0x04ff0000)]
+  0x04b37000 JavaThread "AWT-Windows" daemon [_thread_in_native, id=8132, stack(0x05000000,0x05050000)]
+  0x04b36800 JavaThread "AWT-Shutdown" [_thread_blocked, id=6648, stack(0x04e80000,0x04ed0000)]
+  0x04b34400 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=6724, stack(0x048a0000,0x048f0000)]
+  0x021e4000 JavaThread "Service Thread" daemon [_thread_blocked, id=4916, stack(0x04a00000,0x04a50000)]
+  0x021cd000 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=6464, stack(0x04920000,0x04970000)]
+  0x021cb800 JavaThread "Attach Listener" daemon [_thread_blocked, id=7084, stack(0x045f0000,0x04640000)]
+  0x021c8800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6700, stack(0x044b0000,0x04500000)]
+  0x021b9c00 JavaThread "Finalizer" daemon [_thread_blocked, id=6720, stack(0x04530000,0x04580000)]
+  0x021b8400 JavaThread "Reference Handler" daemon [_thread_blocked, id=7572, stack(0x04300000,0x04350000)]
+
+Other Threads:
+  0x021b6400 VMThread [stack: 0x02200000,0x02250000] [id=7904]
+  0x021f7800 WatcherThread [stack: 0x04aa0000,0x04af0000] [id=3624]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4928K, used 2457K [0x247a0000, 0x24cf0000, 0x29cf0000)
+  eden space 4416K,  44% used [0x247a0000, 0x24986768, 0x24bf0000)
+  from space 512K, 100% used [0x24c70000, 0x24cf0000, 0x24cf0000)
+  to   space 512K,   0% used [0x24bf0000, 0x24bf0000, 0x24c70000)
+ tenured generation   total 10944K, used 2056K [0x29cf0000, 0x2a7a0000, 0x347a0000)
+   the space 10944K,  18% used [0x29cf0000, 0x29ef2038, 0x29ef2200, 0x2a7a0000)
+ compacting perm gen  total 12288K, used 1123K [0x347a0000, 0x353a0000, 0x387a0000)
+   the space 12288K,   9% used [0x347a0000, 0x348b8ea0, 0x348b9000, 0x353a0000)
+    ro space 10240K,  42% used [0x387a0000, 0x38bdc660, 0x38bdc800, 0x391a0000)
+    rw space 12288K,  53% used [0x391a0000, 0x39818180, 0x39818200, 0x39da0000)
+
+Code Cache  [0x022f0000, 0x023d8000, 0x042f0000)
+ total_blobs=566 nmethods=335 adapters=163 free_code_cache=31853Kb largest_free_block=32617984
+
+Dynamic libraries:
+0x00cd0000 - 0x00cff000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\javaw.exe
+0x76f70000 - 0x770f0000 	C:\Windows\SysWOW64\ntdll.dll
+0x74cb0000 - 0x74dc0000 	C:\Windows\syswow64\kernel32.dll
+0x74e60000 - 0x74ea7000 	C:\Windows\syswow64\KERNELBASE.dll
+0x761b0000 - 0x76250000 	C:\Windows\syswow64\ADVAPI32.dll
+0x75030000 - 0x750dc000 	C:\Windows\syswow64\msvcrt.dll
+0x74e40000 - 0x74e59000 	C:\Windows\SysWOW64\sechost.dll
+0x764d0000 - 0x765c0000 	C:\Windows\syswow64\RPCRT4.dll
+0x749c0000 - 0x74a20000 	C:\Windows\syswow64\SspiCli.dll
+0x749b0000 - 0x749bc000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x76250000 - 0x76350000 	C:\Windows\syswow64\USER32.dll
+0x76350000 - 0x763e0000 	C:\Windows\syswow64\GDI32.dll
+0x75000000 - 0x7500a000 	C:\Windows\syswow64\LPK.dll
+0x74ee0000 - 0x74f7d000 	C:\Windows\syswow64\USP10.dll
+0x70a60000 - 0x70bfe000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x74fa0000 - 0x74ff7000 	C:\Windows\syswow64\SHLWAPI.dll
+0x75140000 - 0x751a0000 	C:\Windows\system32\IMM32.DLL
+0x74be0000 - 0x74cac000 	C:\Windows\syswow64\MSCTF.dll
+0x63e40000 - 0x63efe000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\msvcr100.dll
+0x6ac00000 - 0x6af21000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\client\jvm.dll
+0x73040000 - 0x73047000 	C:\Windows\system32\WSOCK32.dll
+0x74a20000 - 0x74a55000 	C:\Windows\syswow64\WS2_32.dll
+0x763e0000 - 0x763e6000 	C:\Windows\syswow64\NSI.dll
+0x72fd0000 - 0x73002000 	C:\Windows\system32\WINMM.dll
+0x74bd0000 - 0x74bd5000 	C:\Windows\syswow64\PSAPI.DLL
+0x74750000 - 0x7475c000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\verify.dll
+0x73e60000 - 0x73e80000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\java.dll
+0x73440000 - 0x73453000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\zip.dll
+0x632f0000 - 0x63432000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\awt.dll
+0x763f0000 - 0x7647f000 	C:\Windows\syswow64\OLEAUT32.dll
+0x751a0000 - 0x752fc000 	C:\Windows\syswow64\ole32.dll
+0x70e50000 - 0x70e63000 	C:\Windows\system32\DWMAPI.DLL
+0x70e70000 - 0x70ef0000 	C:\Windows\system32\uxtheme.dll
+0x75560000 - 0x761aa000 	C:\Windows\syswow64\SHELL32.dll
+0x10000000 - 0x10012000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\rxtxSerial.dll
+0x6c240000 - 0x6c267000 	C:\Windows\system32\crtdll.dll
+0x64650000 - 0x6467a000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\fontmanager.dll
+0x716b0000 - 0x716c4000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\net.dll
+0x72c90000 - 0x72ccc000 	C:\Windows\system32\mswsock.dll
+0x746c0000 - 0x746c6000 	C:\Windows\System32\wship6.dll
+0x73430000 - 0x7343f000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\nio.dll
+0x6a6c0000 - 0x6a6f1000 	C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse\jre\bin\t2k.dll
+0x75300000 - 0x75383000 	C:\Windows\syswow64\CLBCatQ.DLL
+0x739e0000 - 0x73b10000 	C:\Windows\system32\WindowsCodecs.dll
+0x71f00000 - 0x71f4c000 	C:\Windows\system32\apphelp.dll
+0x04460000 - 0x04482000 	C:\Users\Tapan108\AppData\Roaming\Dropbox\bin\DropboxExt.19.dll
+0x738f0000 - 0x739db000 	C:\Windows\system32\dbghelp.dll
+0x71790000 - 0x7181e000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCP90.dll
+0x732d0000 - 0x73373000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCR90.dll
+0x73f30000 - 0x73f61000 	C:\Windows\system32\EhStorShell.dll
+0x766b0000 - 0x7684d000 	C:\Windows\syswow64\SETUPAPI.dll
+0x74eb0000 - 0x74ed7000 	C:\Windows\syswow64\CFGMGR32.dll
+0x74f80000 - 0x74f92000 	C:\Windows\syswow64\DEVOBJ.dll
+0x741f0000 - 0x742e5000 	C:\Windows\system32\PROPSYS.dll
+0x6cd20000 - 0x6d126000 	C:\PROGRA~2\MICROS~2\Office14\GROOVEEX.DLL
+0x74690000 - 0x746bb000 	C:\Windows\WinSxS\x86_microsoft.vc90.atl_1fc8b3b9a1e18e3b_9.0.30729.6161_none_51cd0a7abbe4e19b\ATL90.DLL
+0x734d0000 - 0x738ea000 	C:\PROGRA~2\COMMON~1\MICROS~1\OFFICE14\Cultures\office.odf
+0x6c4b0000 - 0x6cd15000 	C:\PROGRA~2\MICROS~2\Office14\1033\GrooveIntlResource.dll
+0x73460000 - 0x734d0000 	C:\Windows\system32\ntshrui.dll
+0x71fc0000 - 0x71fd9000 	C:\Windows\system32\srvcli.dll
+0x71c60000 - 0x71c6b000 	C:\Windows\system32\cscapi.dll
+0x74670000 - 0x7467a000 	C:\Windows\system32\slc.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 
+java_command: pack.GUI
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.7.0_25
+CLASSPATH=.;C:\Program Files (x86)\Java\jre7\lib\ext\QTJava.zip
+PATH=C:/Users/Tapan108/Documents/University Related/Second Year/First Semester/eclipse/jre/bin/client;C:/Users/Tapan108/Documents/University Related/Second Year/First Semester/eclipse/jre/bin;C:/Users/Tapan108/Documents/University Related/Second Year/First Semester/eclipse/jre/lib/i386;C:\Program Files (x86)\iis express\PHP\v5.3;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\PostgreSQL\9.2\bin;C:\Propel\generator\bin;C:\phing-2.4.12\bin;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\Microsoft\Web Platform Installer\;C:\Sun\SDK\bin;C:\Program Files (x86)\Java\jdk1.7.0\bin;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Sun\SDK\bin;C:\Program Files (x86)\Java\jdk1.7.0\bin;C:\Users\Tapan108\Documents\University Related\Second Year\First Semester\eclipse;
+USERNAME=Tapan108
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 37 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 37 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 3856240k(1537688k free), swap 7710616k(5040656k free)
+
+vm_info: Java HotSpot(TM) Client VM (21.0-b17) for windows-x86 JRE (1.7.0-b147), built on Jun 27 2011 02:25:52 by "java_re" with unknown MS VC++:1600
+
+time: Thu Dec 19 23:24:45 2013
+elapsed time: 189 seconds
+

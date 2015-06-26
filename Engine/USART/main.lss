@@ -1,0 +1,1156 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000586  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000810  00800100  00800100  000005fa  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  000005fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 00000171  00000000  00000000  0000061a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000691  00000000  00000000  0000078b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000276  00000000  00000000  00000e1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   000004f9  00000000  00000000  00001092  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000140  00000000  00000000  0000158c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000209  00000000  00000000  000016cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    0000022c  00000000  00000000  000018d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000048  00000000  00000000  00001b01  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	19 e0       	ldi	r17, 0x09	; 9
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a0 31       	cpi	r26, 0x10	; 16
+  80:	b1 07       	cpc	r27, r17
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 10 02 	call	0x420	; 0x420 <main>
+  88:	0c 94 c1 02 	jmp	0x582	; 0x582 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <init_queue>:
+
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+  90:	fc 01       	movw	r30, r24
+	q->front = 0;
+  92:	e0 50       	subi	r30, 0x00	; 0
+  94:	fc 4f       	sbci	r31, 0xFC	; 252
+  96:	11 92       	st	Z+, r1
+  98:	11 92       	st	Z+, r1
+	q->back = QUEUESIZE - 1;
+  9a:	8f ef       	ldi	r24, 0xFF	; 255
+  9c:	93 e0       	ldi	r25, 0x03	; 3
+  9e:	81 93       	st	Z+, r24
+  a0:	91 93       	st	Z+, r25
+	q->count = 0;
+  a2:	11 82       	std	Z+1, r1	; 0x01
+  a4:	10 82       	st	Z, r1
+}
+  a6:	08 95       	ret
+
+000000a8 <full>:
+
+/*
+*	Returns true if the FIFOQueue is Full, false otherwise
+*/
+bool full(FIFOQueue *q) {
+	if(q->count >= QUEUESIZE) {
+  a8:	20 e0       	ldi	r18, 0x00	; 0
+  aa:	fc 01       	movw	r30, r24
+  ac:	ec 5f       	subi	r30, 0xFC	; 252
+  ae:	fb 4f       	sbci	r31, 0xFB	; 251
+  b0:	80 81       	ld	r24, Z
+  b2:	91 81       	ldd	r25, Z+1	; 0x01
+  b4:	80 50       	subi	r24, 0x00	; 0
+  b6:	94 40       	sbci	r25, 0x04	; 4
+  b8:	0c f0       	brlt	.+2      	; 0xbc <full+0x14>
+  ba:	21 e0       	ldi	r18, 0x01	; 1
+		return true;
+	}
+	return false;
+}
+  bc:	82 2f       	mov	r24, r18
+  be:	08 95       	ret
+
+000000c0 <empty>:
+
+/*
+*	Returns true if the FIFOQueue is empty, false otherwise
+*/
+bool empty(FIFOQueue *q) {
+	if(q->count <= 0) {
+  c0:	20 e0       	ldi	r18, 0x00	; 0
+  c2:	fc 01       	movw	r30, r24
+  c4:	ec 5f       	subi	r30, 0xFC	; 252
+  c6:	fb 4f       	sbci	r31, 0xFB	; 251
+  c8:	80 81       	ld	r24, Z
+  ca:	91 81       	ldd	r25, Z+1	; 0x01
+  cc:	18 16       	cp	r1, r24
+  ce:	19 06       	cpc	r1, r25
+  d0:	0c f0       	brlt	.+2      	; 0xd4 <empty+0x14>
+  d2:	21 e0       	ldi	r18, 0x01	; 1
+		return true;
+	}
+	return false;
+}
+  d4:	82 2f       	mov	r24, r18
+  d6:	08 95       	ret
+
+000000d8 <enqueue>:
+
+/*
+*	Adds a new item to the FIFOQueue
+*/
+bool enqueue(FIFOQueue *q, char c) {
+  d8:	ef 92       	push	r14
+  da:	ff 92       	push	r15
+  dc:	0f 93       	push	r16
+  de:	1f 93       	push	r17
+  e0:	cf 93       	push	r28
+  e2:	df 93       	push	r29
+  e4:	8c 01       	movw	r16, r24
+  e6:	46 2f       	mov	r20, r22
+
+/*
+*	Returns true if the FIFOQueue is Full, false otherwise
+*/
+bool full(FIFOQueue *q) {
+	if(q->count >= QUEUESIZE) {
+  e8:	84 e0       	ldi	r24, 0x04	; 4
+  ea:	e8 2e       	mov	r14, r24
+  ec:	f8 2e       	mov	r15, r24
+  ee:	e0 0e       	add	r14, r16
+  f0:	f1 1e       	adc	r15, r17
+  f2:	d7 01       	movw	r26, r14
+  f4:	cd 91       	ld	r28, X+
+  f6:	dc 91       	ld	r29, X
+  f8:	b4 e0       	ldi	r27, 0x04	; 4
+  fa:	c0 30       	cpi	r28, 0x00	; 0
+  fc:	db 07       	cpc	r29, r27
+  fe:	44 f0       	brlt	.+16     	; 0x110 <enqueue+0x38>
+ 100:	80 e0       	ldi	r24, 0x00	; 0
+		q->count = q->count + 1;
+		return true;
+	}
+
+	return false;
+}
+ 102:	df 91       	pop	r29
+ 104:	cf 91       	pop	r28
+ 106:	1f 91       	pop	r17
+ 108:	0f 91       	pop	r16
+ 10a:	ff 90       	pop	r15
+ 10c:	ef 90       	pop	r14
+ 10e:	08 95       	ret
+*	Adds a new item to the FIFOQueue
+*/
+bool enqueue(FIFOQueue *q, char c) {
+
+	if(full(q) == false) {
+		q->back = (q->back + 1) % QUEUESIZE;
+ 110:	98 01       	movw	r18, r16
+ 112:	2e 5f       	subi	r18, 0xFE	; 254
+ 114:	3b 4f       	sbci	r19, 0xFB	; 251
+ 116:	f9 01       	movw	r30, r18
+ 118:	80 81       	ld	r24, Z
+ 11a:	91 81       	ldd	r25, Z+1	; 0x01
+ 11c:	01 96       	adiw	r24, 0x01	; 1
+ 11e:	60 e0       	ldi	r22, 0x00	; 0
+ 120:	74 e0       	ldi	r23, 0x04	; 4
+ 122:	0e 94 8c 02 	call	0x518	; 0x518 <__divmodhi4>
+ 126:	fc 01       	movw	r30, r24
+ 128:	d9 01       	movw	r26, r18
+ 12a:	8d 93       	st	X+, r24
+ 12c:	9c 93       	st	X, r25
+		q->buffer[q->back] = c;
+ 12e:	e0 0f       	add	r30, r16
+ 130:	f1 1f       	adc	r31, r17
+ 132:	40 83       	st	Z, r20
+		q->count = q->count + 1;
+ 134:	21 96       	adiw	r28, 0x01	; 1
+ 136:	f7 01       	movw	r30, r14
+ 138:	d1 83       	std	Z+1, r29	; 0x01
+ 13a:	c0 83       	st	Z, r28
+ 13c:	81 e0       	ldi	r24, 0x01	; 1
+ 13e:	e1 cf       	rjmp	.-62     	; 0x102 <enqueue+0x2a>
+
+00000140 <dequeue>:
+}
+
+/*
+*	Returns true if an item was dequeued, false otherwise
+*/
+bool dequeue(FIFOQueue *q, char *data) {
+ 140:	cf 93       	push	r28
+ 142:	df 93       	push	r29
+ 144:	ac 01       	movw	r20, r24
+
+/*
+*	Returns true if the FIFOQueue is empty, false otherwise
+*/
+bool empty(FIFOQueue *q) {
+	if(q->count <= 0) {
+ 146:	ec 01       	movw	r28, r24
+ 148:	cc 5f       	subi	r28, 0xFC	; 252
+ 14a:	db 4f       	sbci	r29, 0xFB	; 251
+ 14c:	88 81       	ld	r24, Y
+ 14e:	99 81       	ldd	r25, Y+1	; 0x01
+ 150:	18 16       	cp	r1, r24
+ 152:	19 06       	cpc	r1, r25
+ 154:	24 f0       	brlt	.+8      	; 0x15e <dequeue+0x1e>
+ 156:	80 e0       	ldi	r24, 0x00	; 0
+		q->front = (q->front + 1) % QUEUESIZE;
+		q->count = q->count - 1;
+		return true;
+	}
+	return false;
+}
+ 158:	df 91       	pop	r29
+ 15a:	cf 91       	pop	r28
+ 15c:	08 95       	ret
+*	Returns true if an item was dequeued, false otherwise
+*/
+bool dequeue(FIFOQueue *q, char *data) {
+
+	if(empty(q) == false) {
+		*data = q->buffer[q->front];
+ 15e:	9a 01       	movw	r18, r20
+ 160:	20 50       	subi	r18, 0x00	; 0
+ 162:	3c 4f       	sbci	r19, 0xFC	; 252
+ 164:	d9 01       	movw	r26, r18
+ 166:	ed 91       	ld	r30, X+
+ 168:	fc 91       	ld	r31, X
+ 16a:	11 97       	sbiw	r26, 0x01	; 1
+ 16c:	e4 0f       	add	r30, r20
+ 16e:	f5 1f       	adc	r31, r21
+ 170:	80 81       	ld	r24, Z
+ 172:	fb 01       	movw	r30, r22
+ 174:	80 83       	st	Z, r24
+		q->front = (q->front + 1) % QUEUESIZE;
+ 176:	8d 91       	ld	r24, X+
+ 178:	9c 91       	ld	r25, X
+ 17a:	01 96       	adiw	r24, 0x01	; 1
+ 17c:	60 e0       	ldi	r22, 0x00	; 0
+ 17e:	74 e0       	ldi	r23, 0x04	; 4
+ 180:	0e 94 8c 02 	call	0x518	; 0x518 <__divmodhi4>
+ 184:	d9 01       	movw	r26, r18
+ 186:	8d 93       	st	X+, r24
+ 188:	9c 93       	st	X, r25
+		q->count = q->count - 1;
+ 18a:	88 81       	ld	r24, Y
+ 18c:	99 81       	ldd	r25, Y+1	; 0x01
+ 18e:	01 97       	sbiw	r24, 0x01	; 1
+ 190:	99 83       	std	Y+1, r25	; 0x01
+ 192:	88 83       	st	Y, r24
+ 194:	81 e0       	ldi	r24, 0x01	; 1
+ 196:	e0 cf       	rjmp	.-64     	; 0x158 <dequeue+0x18>
+
+00000198 <terminate_queue>:
+}
+
+/*
+*	Null terminates a FIFOQueue's buffer
+*/
+void terminate_queue(FIFOQueue *q) {
+ 198:	dc 01       	movw	r26, r24
+
+/*
+*	Returns true if the FIFOQueue is Full, false otherwise
+*/
+bool full(FIFOQueue *q) {
+	if(q->count >= QUEUESIZE) {
+ 19a:	ac 5f       	subi	r26, 0xFC	; 252
+ 19c:	bb 4f       	sbci	r27, 0xFB	; 251
+ 19e:	8d 91       	ld	r24, X+
+ 1a0:	9c 91       	ld	r25, X
+ 1a2:	11 97       	sbiw	r26, 0x01	; 1
+ 1a4:	a4 50       	subi	r26, 0x04	; 4
+ 1a6:	b4 40       	sbci	r27, 0x04	; 4
+ 1a8:	80 50       	subi	r24, 0x00	; 0
+ 1aa:	94 40       	sbci	r25, 0x04	; 4
+ 1ac:	64 f0       	brlt	.+24     	; 0x1c6 <terminate_queue+0x2e>
+void terminate_queue(FIFOQueue *q) {
+	if(full(q) == false) {
+		enqueue(q, 0x0A);
+		return;
+	}
+	q->buffer[q->back] = 0x0A;
+ 1ae:	ae 5f       	subi	r26, 0xFE	; 254
+ 1b0:	bb 4f       	sbci	r27, 0xFB	; 251
+ 1b2:	ed 91       	ld	r30, X+
+ 1b4:	fc 91       	ld	r31, X
+ 1b6:	11 97       	sbiw	r26, 0x01	; 1
+ 1b8:	a2 50       	subi	r26, 0x02	; 2
+ 1ba:	b4 40       	sbci	r27, 0x04	; 4
+ 1bc:	ea 0f       	add	r30, r26
+ 1be:	fb 1f       	adc	r31, r27
+ 1c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 1c2:	80 83       	st	Z, r24
+ 1c4:	08 95       	ret
+/*
+*	Null terminates a FIFOQueue's buffer
+*/
+void terminate_queue(FIFOQueue *q) {
+	if(full(q) == false) {
+		enqueue(q, 0x0A);
+ 1c6:	cd 01       	movw	r24, r26
+ 1c8:	6a e0       	ldi	r22, 0x0A	; 10
+ 1ca:	0e 94 6c 00 	call	0xd8	; 0xd8 <enqueue>
+ 1ce:	08 95       	ret
+
+000001d0 <enableRX>:
+*	Enables RX Interrupts
+*	RXEN0 - Receive Enable flag
+*	RXCIE0 - Receive Complete Interrupt flag
+*/	
+void enableRX(void) { 
+	UCSR0B |= (1<<RXEN0) | (1<<RXCIE0);
+ 1d0:	e1 ec       	ldi	r30, 0xC1	; 193
+ 1d2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d4:	80 81       	ld	r24, Z
+ 1d6:	80 69       	ori	r24, 0x90	; 144
+ 1d8:	80 83       	st	Z, r24
+}
+ 1da:	08 95       	ret
+
+000001dc <enableTX>:
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void enableTX(void) {
+
+	UCSR0B |= (1<<TXEN0) | (1<<UDRIE0);
+ 1dc:	e1 ec       	ldi	r30, 0xC1	; 193
+ 1de:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e0:	80 81       	ld	r24, Z
+ 1e2:	88 62       	ori	r24, 0x28	; 40
+ 1e4:	80 83       	st	Z, r24
+}
+ 1e6:	08 95       	ret
+
+000001e8 <disableRX>:
+*	Disables RX Interrupts
+*	RXEN0 - Receive Enable flag
+*	RXCIE0 - Receive Complete Interrupt flag
+*/
+void disableRX(void) {
+	UCSR0B &= ~((1<<RXEN0) | (1<<RXCIE0));
+ 1e8:	e1 ec       	ldi	r30, 0xC1	; 193
+ 1ea:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ec:	80 81       	ld	r24, Z
+ 1ee:	8f 76       	andi	r24, 0x6F	; 111
+ 1f0:	80 83       	st	Z, r24
+}
+ 1f2:	08 95       	ret
+
+000001f4 <disableTX>:
+*	Disables Transmitter and UDR Receive Interrupt
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void disableTX(void) {
+	UCSR0B &= ~((1<<TXEN0)|(1<<UDRIE0));
+ 1f4:	e1 ec       	ldi	r30, 0xC1	; 193
+ 1f6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1f8:	80 81       	ld	r24, Z
+ 1fa:	87 7d       	andi	r24, 0xD7	; 215
+ 1fc:	80 83       	st	Z, r24
+}
+ 1fe:	08 95       	ret
+
+00000200 <USARTWriteChar>:
+
+
+/*
+*	Writes a single character to USART TX. 
+*/
+void USARTWriteChar(char data){
+ 200:	98 2f       	mov	r25, r24
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void enableTX(void) {
+
+	UCSR0B |= (1<<TXEN0) | (1<<UDRIE0);
+ 202:	80 91 c1 00 	lds	r24, 0x00C1
+ 206:	88 62       	ori	r24, 0x28	; 40
+ 208:	80 93 c1 00 	sts	0x00C1, r24
+*/
+void USARTWriteChar(char data){
+	
+	enableTX();
+	
+	while(!(UCSR0A & (1<<UDRE0))) {
+ 20c:	80 91 c0 00 	lds	r24, 0x00C0
+ 210:	85 ff       	sbrs	r24, 5
+ 212:	fc cf       	rjmp	.-8      	; 0x20c <USARTWriteChar+0xc>
+		//wait until UDR0 is writeable
+	}
+	UDR0=data;
+ 214:	90 93 c6 00 	sts	0x00C6, r25
+*	Disables Transmitter and UDR Receive Interrupt
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void disableTX(void) {
+	UCSR0B &= ~((1<<TXEN0)|(1<<UDRIE0));
+ 218:	80 91 c1 00 	lds	r24, 0x00C1
+ 21c:	87 7d       	andi	r24, 0xD7	; 215
+ 21e:	80 93 c1 00 	sts	0x00C1, r24
+	}
+	UDR0=data;
+	
+	disableTX();
+	
+}
+ 222:	08 95       	ret
+
+00000224 <USARTReadChar>:
+/*
+*	Reads a single character from RX
+*/
+char USARTReadChar(void){
+	
+   while(!(UCSR0A & (1<<RXC0))){
+ 224:	80 91 c0 00 	lds	r24, 0x00C0
+ 228:	87 ff       	sbrs	r24, 7
+ 22a:	fc cf       	rjmp	.-8      	; 0x224 <USARTReadChar>
+	//wait for the character
+   }
+   
+   return UDR0;
+ 22c:	80 91 c6 00 	lds	r24, 0x00C6
+}
+ 230:	08 95       	ret
+
+00000232 <printQueue>:
+}
+
+/*
+*	Prints the content of a FIFOQueue's buffer
+*/
+void printQueue(FIFOQueue *q) {
+ 232:	ef 92       	push	r14
+ 234:	ff 92       	push	r15
+ 236:	0f 93       	push	r16
+ 238:	1f 93       	push	r17
+ 23a:	df 93       	push	r29
+ 23c:	cf 93       	push	r28
+ 23e:	0f 92       	push	r0
+ 240:	cd b7       	in	r28, 0x3d	; 61
+ 242:	de b7       	in	r29, 0x3e	; 62
+ 244:	8c 01       	movw	r16, r24
+
+	char c;
+
+	while(dequeue(q, &c)) {
+ 246:	7e 01       	movw	r14, r28
+ 248:	08 94       	sec
+ 24a:	e1 1c       	adc	r14, r1
+ 24c:	f1 1c       	adc	r15, r1
+ 24e:	03 c0       	rjmp	.+6      	; 0x256 <printQueue+0x24>
+		//printf("%c", c);
+		USARTWriteChar(c);
+ 250:	89 81       	ldd	r24, Y+1	; 0x01
+ 252:	0e 94 00 01 	call	0x200	; 0x200 <USARTWriteChar>
+*/
+void printQueue(FIFOQueue *q) {
+
+	char c;
+
+	while(dequeue(q, &c)) {
+ 256:	c8 01       	movw	r24, r16
+ 258:	b7 01       	movw	r22, r14
+ 25a:	0e 94 a0 00 	call	0x140	; 0x140 <dequeue>
+ 25e:	88 23       	and	r24, r24
+ 260:	b9 f7       	brne	.-18     	; 0x250 <printQueue+0x1e>
+		//printf("%c", c);
+		USARTWriteChar(c);
+	}
+
+	//printf("\n");
+}
+ 262:	0f 90       	pop	r0
+ 264:	cf 91       	pop	r28
+ 266:	df 91       	pop	r29
+ 268:	1f 91       	pop	r17
+ 26a:	0f 91       	pop	r16
+ 26c:	ff 90       	pop	r15
+ 26e:	ef 90       	pop	r14
+ 270:	08 95       	ret
+
+00000272 <USART_Init>:
+/*
+*	Initializes a new UART session
+*/
+void USART_Init(void (*ptrParseFunction)(FIFOQueue*, FIFOQueue*)) {
+	
+	cli();
+ 272:	f8 94       	cli
+	//set the pointer to the function that will handle parsing
+	parseHandler = (*ptrParseFunction);
+ 274:	90 93 0f 09 	sts	0x090F, r25
+ 278:	80 93 0e 09 	sts	0x090E, r24
+	
+	//Set the prescaler for the BAUD as well as the BAUD
+	UBRR0H = (unsigned char)(MYUBRR>>8); 
+ 27c:	10 92 c5 00 	sts	0x00C5, r1
+	UBRR0L = (unsigned char)MYUBRR;
+ 280:	87 e6       	ldi	r24, 0x67	; 103
+ 282:	80 93 c4 00 	sts	0x00C4, r24
+
+	/* Set frame format: 8data, 2stop bit */ 
+	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+ 286:	8e e0       	ldi	r24, 0x0E	; 14
+ 288:	80 93 c2 00 	sts	0x00C2, r24
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 28c:	10 92 09 09 	sts	0x0909, r1
+ 290:	10 92 08 09 	sts	0x0908, r1
+	q->back = QUEUESIZE - 1;
+ 294:	8f ef       	ldi	r24, 0xFF	; 255
+ 296:	93 e0       	ldi	r25, 0x03	; 3
+ 298:	90 93 0b 09 	sts	0x090B, r25
+ 29c:	80 93 0a 09 	sts	0x090A, r24
+	q->count = 0;
+ 2a0:	10 92 0d 09 	sts	0x090D, r1
+ 2a4:	10 92 0c 09 	sts	0x090C, r1
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 2a8:	10 92 03 05 	sts	0x0503, r1
+ 2ac:	10 92 02 05 	sts	0x0502, r1
+	q->back = QUEUESIZE - 1;
+ 2b0:	90 93 05 05 	sts	0x0505, r25
+ 2b4:	80 93 04 05 	sts	0x0504, r24
+	q->count = 0;
+ 2b8:	10 92 07 05 	sts	0x0507, r1
+ 2bc:	10 92 06 05 	sts	0x0506, r1
+*	Disables Transmitter and UDR Receive Interrupt
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void disableTX(void) {
+	UCSR0B &= ~((1<<TXEN0)|(1<<UDRIE0));
+ 2c0:	e1 ec       	ldi	r30, 0xC1	; 193
+ 2c2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c4:	80 81       	ld	r24, Z
+ 2c6:	87 7d       	andi	r24, 0xD7	; 215
+ 2c8:	80 83       	st	Z, r24
+*	Enables RX Interrupts
+*	RXEN0 - Receive Enable flag
+*	RXCIE0 - Receive Complete Interrupt flag
+*/	
+void enableRX(void) { 
+	UCSR0B |= (1<<RXEN0) | (1<<RXCIE0);
+ 2ca:	80 81       	ld	r24, Z
+ 2cc:	80 69       	ori	r24, 0x90	; 144
+ 2ce:	80 83       	st	Z, r24
+	//disable transmit
+	disableTX();
+	
+	//enable receiver
+	enableRX();
+}
+ 2d0:	08 95       	ret
+
+000002d2 <USART0_RX_vect>:
+
+/*
+*	Interrupt fires when Data is available in UDR1
+*/
+ISR(USART0_RX_vect){ 
+ 2d2:	1f 92       	push	r1
+ 2d4:	0f 92       	push	r0
+ 2d6:	0f b6       	in	r0, 0x3f	; 63
+ 2d8:	0f 92       	push	r0
+ 2da:	11 24       	eor	r1, r1
+ 2dc:	2f 93       	push	r18
+ 2de:	3f 93       	push	r19
+ 2e0:	4f 93       	push	r20
+ 2e2:	5f 93       	push	r21
+ 2e4:	6f 93       	push	r22
+ 2e6:	7f 93       	push	r23
+ 2e8:	8f 93       	push	r24
+ 2ea:	9f 93       	push	r25
+ 2ec:	af 93       	push	r26
+ 2ee:	bf 93       	push	r27
+ 2f0:	ef 93       	push	r30
+ 2f2:	ff 93       	push	r31
+
+	DDRB |= (1<<PIN6); // Data Direction register assigning only pin6 of port B to output
+ 2f4:	26 9a       	sbi	0x04, 6	; 4
+	PORTB ^= (1<<PIN6); // toggle Pin6 of PortB => led blink!
+ 2f6:	85 b1       	in	r24, 0x05	; 5
+ 2f8:	90 e4       	ldi	r25, 0x40	; 64
+ 2fa:	89 27       	eor	r24, r25
+ 2fc:	85 b9       	out	0x05, r24	; 5
+	
+	//Received byte gets stored here
+	recByte = UDR0; 
+ 2fe:	80 91 c6 00 	lds	r24, 0x00C6
+ 302:	80 93 01 01 	sts	0x0101, r24
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void enableTX(void) {
+
+	UCSR0B |= (1<<TXEN0) | (1<<UDRIE0);
+ 306:	80 91 c1 00 	lds	r24, 0x00C1
+ 30a:	88 62       	ori	r24, 0x28	; 40
+ 30c:	80 93 c1 00 	sts	0x00C1, r24
+	
+	//Received byte gets stored here
+	recByte = UDR0; 
+	
+	enableTX();
+	printQueue(&readQueue);
+ 310:	88 e0       	ldi	r24, 0x08	; 8
+ 312:	95 e0       	ldi	r25, 0x05	; 5
+ 314:	0e 94 19 01 	call	0x232	; 0x232 <printQueue>
+	printQueue(&writeQueue);
+ 318:	82 e0       	ldi	r24, 0x02	; 2
+ 31a:	91 e0       	ldi	r25, 0x01	; 1
+ 31c:	0e 94 19 01 	call	0x232	; 0x232 <printQueue>
+
+/*
+*	Returns true if the FIFOQueue is Full, false otherwise
+*/
+bool full(FIFOQueue *q) {
+	if(q->count >= QUEUESIZE) {
+ 320:	80 91 0c 09 	lds	r24, 0x090C
+ 324:	90 91 0d 09 	lds	r25, 0x090D
+ 328:	80 50       	subi	r24, 0x00	; 0
+ 32a:	94 40       	sbci	r25, 0x04	; 4
+ 32c:	84 f0       	brlt	.+32     	; 0x34e <USART0_RX_vect+0x7c>
+ 32e:	05 c0       	rjmp	.+10     	; 0x33a <USART0_RX_vect+0x68>
+		
+		parseHandler(&readQueue, &writeQueue); 		
+		
+	}else if(recByte != 0x0A) {
+		//queue the data to be read
+		enqueue(&readQueue, recByte); 	
+ 330:	88 e0       	ldi	r24, 0x08	; 8
+ 332:	95 e0       	ldi	r25, 0x05	; 5
+ 334:	0e 94 6c 00 	call	0xd8	; 0xd8 <enqueue>
+ 338:	0f c0       	rjmp	.+30     	; 0x358 <USART0_RX_vect+0x86>
+		
+	}else if(recByte == 0x0A) {
+		//since the end of string was reached this must be a command
+		
+		parseHandler(&readQueue, &writeQueue);		
+ 33a:	e0 91 0e 09 	lds	r30, 0x090E
+ 33e:	f0 91 0f 09 	lds	r31, 0x090F
+ 342:	88 e0       	ldi	r24, 0x08	; 8
+ 344:	95 e0       	ldi	r25, 0x05	; 5
+ 346:	62 e0       	ldi	r22, 0x02	; 2
+ 348:	71 e0       	ldi	r23, 0x01	; 1
+ 34a:	09 95       	icall
+ 34c:	05 c0       	rjmp	.+10     	; 0x358 <USART0_RX_vect+0x86>
+	if(full(&readQueue) == true) { 	
+		
+		
+		parseHandler(&readQueue, &writeQueue); 		
+		
+	}else if(recByte != 0x0A) {
+ 34e:	60 91 01 01 	lds	r22, 0x0101
+ 352:	6a 30       	cpi	r22, 0x0A	; 10
+ 354:	91 f3       	breq	.-28     	; 0x33a <USART0_RX_vect+0x68>
+ 356:	ec cf       	rjmp	.-40     	; 0x330 <USART0_RX_vect+0x5e>
+		
+		parseHandler(&readQueue, &writeQueue);		
+		
+	}
+	
+}	
+ 358:	ff 91       	pop	r31
+ 35a:	ef 91       	pop	r30
+ 35c:	bf 91       	pop	r27
+ 35e:	af 91       	pop	r26
+ 360:	9f 91       	pop	r25
+ 362:	8f 91       	pop	r24
+ 364:	7f 91       	pop	r23
+ 366:	6f 91       	pop	r22
+ 368:	5f 91       	pop	r21
+ 36a:	4f 91       	pop	r20
+ 36c:	3f 91       	pop	r19
+ 36e:	2f 91       	pop	r18
+ 370:	0f 90       	pop	r0
+ 372:	0f be       	out	0x3f, r0	; 63
+ 374:	0f 90       	pop	r0
+ 376:	1f 90       	pop	r1
+ 378:	18 95       	reti
+
+0000037a <USART0_UDRE_vect>:
+
+ISR(USART0_UDRE_vect) {
+ 37a:	1f 92       	push	r1
+ 37c:	0f 92       	push	r0
+ 37e:	0f b6       	in	r0, 0x3f	; 63
+ 380:	0f 92       	push	r0
+ 382:	11 24       	eor	r1, r1
+ 384:	2f 93       	push	r18
+ 386:	3f 93       	push	r19
+ 388:	4f 93       	push	r20
+ 38a:	5f 93       	push	r21
+ 38c:	6f 93       	push	r22
+ 38e:	7f 93       	push	r23
+ 390:	8f 93       	push	r24
+ 392:	9f 93       	push	r25
+ 394:	af 93       	push	r26
+ 396:	bf 93       	push	r27
+ 398:	ef 93       	push	r30
+ 39a:	ff 93       	push	r31
+
+	if(dequeue(&writeQueue, &sendByte) == false) {
+ 39c:	82 e0       	ldi	r24, 0x02	; 2
+ 39e:	91 e0       	ldi	r25, 0x01	; 1
+ 3a0:	60 e0       	ldi	r22, 0x00	; 0
+ 3a2:	71 e0       	ldi	r23, 0x01	; 1
+ 3a4:	0e 94 a0 00 	call	0x140	; 0x140 <dequeue>
+ 3a8:	88 23       	and	r24, r24
+ 3aa:	29 f5       	brne	.+74     	; 0x3f6 <USART0_UDRE_vect+0x7c>
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 3ac:	10 92 09 09 	sts	0x0909, r1
+ 3b0:	10 92 08 09 	sts	0x0908, r1
+	q->back = QUEUESIZE - 1;
+ 3b4:	8f ef       	ldi	r24, 0xFF	; 255
+ 3b6:	93 e0       	ldi	r25, 0x03	; 3
+ 3b8:	90 93 0b 09 	sts	0x090B, r25
+ 3bc:	80 93 0a 09 	sts	0x090A, r24
+	q->count = 0;
+ 3c0:	10 92 0d 09 	sts	0x090D, r1
+ 3c4:	10 92 0c 09 	sts	0x090C, r1
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 3c8:	10 92 03 05 	sts	0x0503, r1
+ 3cc:	10 92 02 05 	sts	0x0502, r1
+	q->back = QUEUESIZE - 1;
+ 3d0:	90 93 05 05 	sts	0x0505, r25
+ 3d4:	80 93 04 05 	sts	0x0504, r24
+	q->count = 0;
+ 3d8:	10 92 07 05 	sts	0x0507, r1
+ 3dc:	10 92 06 05 	sts	0x0506, r1
+*	Disables Transmitter and UDR Receive Interrupt
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void disableTX(void) {
+	UCSR0B &= ~((1<<TXEN0)|(1<<UDRIE0));
+ 3e0:	80 91 c1 00 	lds	r24, 0x00C1
+ 3e4:	87 7d       	andi	r24, 0xD7	; 215
+ 3e6:	80 93 c1 00 	sts	0x00C1, r24
+*	Enables RX Interrupts
+*	RXEN0 - Receive Enable flag
+*	RXCIE0 - Receive Complete Interrupt flag
+*/	
+void enableRX(void) { 
+	UCSR0B |= (1<<RXEN0) | (1<<RXCIE0);
+ 3ea:	80 91 c1 00 	lds	r24, 0x00C1
+ 3ee:	80 69       	ori	r24, 0x90	; 144
+ 3f0:	80 93 c1 00 	sts	0x00C1, r24
+ 3f4:	04 c0       	rjmp	.+8      	; 0x3fe <USART0_UDRE_vect+0x84>
+		init_queue(&readQueue);
+		init_queue(&writeQueue);
+		disableTX();
+		enableRX();
+	}else {
+		UDR0 = sendByte;
+ 3f6:	80 91 00 01 	lds	r24, 0x0100
+ 3fa:	80 93 c6 00 	sts	0x00C6, r24
+	}
+	
+}
+ 3fe:	ff 91       	pop	r31
+ 400:	ef 91       	pop	r30
+ 402:	bf 91       	pop	r27
+ 404:	af 91       	pop	r26
+ 406:	9f 91       	pop	r25
+ 408:	8f 91       	pop	r24
+ 40a:	7f 91       	pop	r23
+ 40c:	6f 91       	pop	r22
+ 40e:	5f 91       	pop	r21
+ 410:	4f 91       	pop	r20
+ 412:	3f 91       	pop	r19
+ 414:	2f 91       	pop	r18
+ 416:	0f 90       	pop	r0
+ 418:	0f be       	out	0x3f, r0	; 63
+ 41a:	0f 90       	pop	r0
+ 41c:	1f 90       	pop	r1
+ 41e:	18 95       	reti
+
+00000420 <main>:
+#include "USART.h"
+
+int main( void ){
+
+	//initialize USART
+	USART_Init(MYUBRR);
+ 420:	87 e6       	ldi	r24, 0x67	; 103
+ 422:	90 e0       	ldi	r25, 0x00	; 0
+ 424:	0e 94 39 01 	call	0x272	; 0x272 <USART_Init>
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 428:	10 92 09 09 	sts	0x0909, r1
+ 42c:	10 92 08 09 	sts	0x0908, r1
+	q->back = QUEUESIZE - 1;
+ 430:	8f ef       	ldi	r24, 0xFF	; 255
+ 432:	93 e0       	ldi	r25, 0x03	; 3
+ 434:	90 93 0b 09 	sts	0x090B, r25
+ 438:	80 93 0a 09 	sts	0x090A, r24
+	q->count = 0;
+ 43c:	10 92 0d 09 	sts	0x090D, r1
+ 440:	10 92 0c 09 	sts	0x090C, r1
+
+/*
+*	Initialize a new FIFOQueue with front at 0, back at QUEUESIZE-1 and count at 0
+*/
+void init_queue(FIFOQueue *q) {
+	q->front = 0;
+ 444:	10 92 03 05 	sts	0x0503, r1
+ 448:	10 92 02 05 	sts	0x0502, r1
+	q->back = QUEUESIZE - 1;
+ 44c:	90 93 05 05 	sts	0x0505, r25
+ 450:	80 93 04 05 	sts	0x0504, r24
+	q->count = 0;
+ 454:	10 92 07 05 	sts	0x0507, r1
+ 458:	10 92 06 05 	sts	0x0506, r1
+*	Disables Transmitter and UDR Receive Interrupt
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void disableTX(void) {
+	UCSR0B &= ~((1<<TXEN0)|(1<<UDRIE0));
+ 45c:	80 91 c1 00 	lds	r24, 0x00C1
+ 460:	87 7d       	andi	r24, 0xD7	; 215
+ 462:	80 93 c1 00 	sts	0x00C1, r24
+*	Enables RX Interrupts
+*	RXEN0 - Receive Enable flag
+*	RXCIE0 - Receive Complete Interrupt flag
+*/	
+void enableRX(void) { 
+	UCSR0B |= (1<<RXEN0) | (1<<RXCIE0);
+ 466:	80 91 c1 00 	lds	r24, 0x00C1
+ 46a:	80 69       	ori	r24, 0x90	; 144
+ 46c:	80 93 c1 00 	sts	0x00C1, r24
+	
+	//enable receiver
+	enableRX();
+	
+	//set enable interrupts
+	sei();
+ 470:	78 94       	sei
+	
+	//set pin c0 to output
+	DDRC |= 1<<PINC0;
+ 472:	38 9a       	sbi	0x07, 0	; 7
+	
+	//light the pin
+	
+	while(1) {
+		PORTC ^= 1<<PINC0;
+ 474:	41 e0       	ldi	r20, 0x01	; 1
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 476:	20 e9       	ldi	r18, 0x90	; 144
+ 478:	31 e0       	ldi	r19, 0x01	; 1
+ 47a:	88 b1       	in	r24, 0x08	; 8
+ 47c:	84 27       	eor	r24, r20
+ 47e:	88 b9       	out	0x08, r24	; 8
+ 480:	80 ed       	ldi	r24, 0xD0	; 208
+ 482:	97 e0       	ldi	r25, 0x07	; 7
+ 484:	f9 01       	movw	r30, r18
+ 486:	31 97       	sbiw	r30, 0x01	; 1
+ 488:	f1 f7       	brne	.-4      	; 0x486 <main+0x66>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 48a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 48c:	d9 f7       	brne	.-10     	; 0x484 <main+0x64>
+ 48e:	f5 cf       	rjmp	.-22     	; 0x47a <main+0x5a>
+
+00000490 <matchString>:
+*	Returns 1 if string1 matches string2, 0 otherwise
+*/
+
+bool matchString(char* string1, char* string2) {
+	
+	if(strncmp(string1, string2, QUEUESIZE-1) == 0) {
+ 490:	4f ef       	ldi	r20, 0xFF	; 255
+ 492:	53 e0       	ldi	r21, 0x03	; 3
+ 494:	0e 94 b3 02 	call	0x566	; 0x566 <strncmp>
+ 498:	9c 01       	movw	r18, r24
+ 49a:	80 e0       	ldi	r24, 0x00	; 0
+ 49c:	23 2b       	or	r18, r19
+ 49e:	09 f4       	brne	.+2      	; 0x4a2 <matchString+0x12>
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+		
+		return true;
+	}
+	return false;
+}
+ 4a2:	08 95       	ret
+
+000004a4 <writeString>:
+
+
+/*
+*	Writes a String into a FIFOQueue's buffer
+*/
+void writeString(char* str) {
+ 4a4:	ef 92       	push	r14
+ 4a6:	ff 92       	push	r15
+ 4a8:	0f 93       	push	r16
+ 4aa:	1f 93       	push	r17
+ 4ac:	cf 93       	push	r28
+ 4ae:	df 93       	push	r29
+ 4b0:	7c 01       	movw	r14, r24
+
+	int length = strlen(str);
+ 4b2:	dc 01       	movw	r26, r24
+ 4b4:	0d 90       	ld	r0, X+
+ 4b6:	00 20       	and	r0, r0
+ 4b8:	e9 f7       	brne	.-6      	; 0x4b4 <writeString+0x10>
+ 4ba:	8d 01       	movw	r16, r26
+ 4bc:	01 50       	subi	r16, 0x01	; 1
+ 4be:	10 40       	sbci	r17, 0x00	; 0
+ 4c0:	08 1b       	sub	r16, r24
+ 4c2:	19 0b       	sbc	r17, r25
+ 4c4:	c0 e0       	ldi	r28, 0x00	; 0
+ 4c6:	d0 e0       	ldi	r29, 0x00	; 0
+ 4c8:	09 c0       	rjmp	.+18     	; 0x4dc <writeString+0x38>
+	int i = 0;
+
+	while((full(&writeQueue) == false) && (length-- > 0)) {
+		enqueue(&writeQueue, str[i]);
+ 4ca:	f7 01       	movw	r30, r14
+ 4cc:	ec 0f       	add	r30, r28
+ 4ce:	fd 1f       	adc	r31, r29
+ 4d0:	82 e0       	ldi	r24, 0x02	; 2
+ 4d2:	91 e0       	ldi	r25, 0x01	; 1
+ 4d4:	60 81       	ld	r22, Z
+ 4d6:	0e 94 6c 00 	call	0xd8	; 0xd8 <enqueue>
+		i++;
+ 4da:	21 96       	adiw	r28, 0x01	; 1
+
+/*
+*	Returns true if the FIFOQueue is Full, false otherwise
+*/
+bool full(FIFOQueue *q) {
+	if(q->count >= QUEUESIZE) {
+ 4dc:	80 91 06 05 	lds	r24, 0x0506
+ 4e0:	90 91 07 05 	lds	r25, 0x0507
+ 4e4:	80 50       	subi	r24, 0x00	; 0
+ 4e6:	94 40       	sbci	r25, 0x04	; 4
+ 4e8:	84 f0       	brlt	.+32     	; 0x50a <writeString+0x66>
+	while((full(&writeQueue) == false) && (length-- > 0)) {
+		enqueue(&writeQueue, str[i]);
+		i++;
+	}
+
+	terminate_queue(&writeQueue);
+ 4ea:	82 e0       	ldi	r24, 0x02	; 2
+ 4ec:	91 e0       	ldi	r25, 0x01	; 1
+ 4ee:	0e 94 cc 00 	call	0x198	; 0x198 <terminate_queue>
+*	TXEN0 - Enables Transmitter USART0
+*	UDRIE0 - Enables UDR Empty Interrupt
+*/
+void enableTX(void) {
+
+	UCSR0B |= (1<<TXEN0) | (1<<UDRIE0);
+ 4f2:	80 91 c1 00 	lds	r24, 0x00C1
+ 4f6:	88 62       	ori	r24, 0x28	; 40
+ 4f8:	80 93 c1 00 	sts	0x00C1, r24
+		i++;
+	}
+
+	terminate_queue(&writeQueue);
+	enableTX();
+}
+ 4fc:	df 91       	pop	r29
+ 4fe:	cf 91       	pop	r28
+ 500:	1f 91       	pop	r17
+ 502:	0f 91       	pop	r16
+ 504:	ff 90       	pop	r15
+ 506:	ef 90       	pop	r14
+ 508:	08 95       	ret
+void writeString(char* str) {
+
+	int length = strlen(str);
+	int i = 0;
+
+	while((full(&writeQueue) == false) && (length-- > 0)) {
+ 50a:	c8 01       	movw	r24, r16
+ 50c:	8c 1b       	sub	r24, r28
+ 50e:	9d 0b       	sbc	r25, r29
+ 510:	18 16       	cp	r1, r24
+ 512:	19 06       	cpc	r1, r25
+ 514:	d4 f2       	brlt	.-76     	; 0x4ca <writeString+0x26>
+ 516:	e9 cf       	rjmp	.-46     	; 0x4ea <writeString+0x46>
+
+00000518 <__divmodhi4>:
+ 518:	97 fb       	bst	r25, 7
+ 51a:	09 2e       	mov	r0, r25
+ 51c:	07 26       	eor	r0, r23
+ 51e:	0a d0       	rcall	.+20     	; 0x534 <__divmodhi4_neg1>
+ 520:	77 fd       	sbrc	r23, 7
+ 522:	04 d0       	rcall	.+8      	; 0x52c <__divmodhi4_neg2>
+ 524:	0c d0       	rcall	.+24     	; 0x53e <__udivmodhi4>
+ 526:	06 d0       	rcall	.+12     	; 0x534 <__divmodhi4_neg1>
+ 528:	00 20       	and	r0, r0
+ 52a:	1a f4       	brpl	.+6      	; 0x532 <__divmodhi4_exit>
+
+0000052c <__divmodhi4_neg2>:
+ 52c:	70 95       	com	r23
+ 52e:	61 95       	neg	r22
+ 530:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000532 <__divmodhi4_exit>:
+ 532:	08 95       	ret
+
+00000534 <__divmodhi4_neg1>:
+ 534:	f6 f7       	brtc	.-4      	; 0x532 <__divmodhi4_exit>
+ 536:	90 95       	com	r25
+ 538:	81 95       	neg	r24
+ 53a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 53c:	08 95       	ret
+
+0000053e <__udivmodhi4>:
+ 53e:	aa 1b       	sub	r26, r26
+ 540:	bb 1b       	sub	r27, r27
+ 542:	51 e1       	ldi	r21, 0x11	; 17
+ 544:	07 c0       	rjmp	.+14     	; 0x554 <__udivmodhi4_ep>
+
+00000546 <__udivmodhi4_loop>:
+ 546:	aa 1f       	adc	r26, r26
+ 548:	bb 1f       	adc	r27, r27
+ 54a:	a6 17       	cp	r26, r22
+ 54c:	b7 07       	cpc	r27, r23
+ 54e:	10 f0       	brcs	.+4      	; 0x554 <__udivmodhi4_ep>
+ 550:	a6 1b       	sub	r26, r22
+ 552:	b7 0b       	sbc	r27, r23
+
+00000554 <__udivmodhi4_ep>:
+ 554:	88 1f       	adc	r24, r24
+ 556:	99 1f       	adc	r25, r25
+ 558:	5a 95       	dec	r21
+ 55a:	a9 f7       	brne	.-22     	; 0x546 <__udivmodhi4_loop>
+ 55c:	80 95       	com	r24
+ 55e:	90 95       	com	r25
+ 560:	bc 01       	movw	r22, r24
+ 562:	cd 01       	movw	r24, r26
+ 564:	08 95       	ret
+
+00000566 <strncmp>:
+ 566:	fb 01       	movw	r30, r22
+ 568:	dc 01       	movw	r26, r24
+ 56a:	41 50       	subi	r20, 0x01	; 1
+ 56c:	50 40       	sbci	r21, 0x00	; 0
+ 56e:	30 f0       	brcs	.+12     	; 0x57c <strncmp+0x16>
+ 570:	8d 91       	ld	r24, X+
+ 572:	01 90       	ld	r0, Z+
+ 574:	80 19       	sub	r24, r0
+ 576:	19 f4       	brne	.+6      	; 0x57e <strncmp+0x18>
+ 578:	00 20       	and	r0, r0
+ 57a:	b9 f7       	brne	.-18     	; 0x56a <strncmp+0x4>
+ 57c:	88 1b       	sub	r24, r24
+ 57e:	99 0b       	sbc	r25, r25
+ 580:	08 95       	ret
+
+00000582 <_exit>:
+ 582:	f8 94       	cli
+
+00000584 <__stop_program>:
+ 584:	ff cf       	rjmp	.-2      	; 0x584 <__stop_program>
