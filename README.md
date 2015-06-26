@@ -1,5 +1,5 @@
 # Quadcopter
-Original Contributors: Raashad Ramdeen, Tapan Shah
+Original Contributors: Raashad Ramdeen, Tapan Shah, Aaron Tupaz
 
 This repository holds the source code for the Quadcopter project from 2012-2013.
 
